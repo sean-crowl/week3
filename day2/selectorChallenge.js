@@ -12,4 +12,7 @@ $(document).ready(function() {
     $("li:nth-child(1)").mouseenter(function() {
         $("li:nth-child(1)").css("font-size", "60px");
     });
+    $("li:nth-child(1)").mouseleave(function() {
+        $("li:nth-child(1)").css("font-size", "16px");
+    });
 });
