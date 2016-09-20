@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Guessing Game</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="guessinggame.js"></script>
+</head>
+
+<body>
+    <h1>Guessing Game!</h1>
+
+    <!-- Need a div for the start game -->
+    <div id="intro">
+        <p>Welcome to my guessing game. Click the button below to begin.</p>
+        <button id="startGame">Play</button>
+    </div>
+
+    <!-- Need a div while playing the game -->
+    <div id="game">
+        <fieldset>
+            <label>What is your guess?
+                <input type="text" maxlength="2" id="tbxGuess" placeholder="from 1 to 10" />
+                <br /> <br />
+                <button id="btnGuess">Guess!</button>
+                <br /> <br />
+                <span id="message"></span>
+        </fieldset>
+    </div>
+    <div id="restart">
+    <button id="restartGame">Start Over</button>
+    </div>
+
+</body>
+
+</html>
