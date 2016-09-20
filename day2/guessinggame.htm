@@ -19,16 +19,23 @@
     <!-- Need a div while playing the game -->
     <div id="game">
         <fieldset>
-            <label>What is your guess?
+            <label id="lab">What is your guess?</label>
+            <br /> <br />
                 <input type="text" maxlength="2" id="tbxGuess" placeholder="from 1 to 10" />
                 <br /> <br />
                 <button id="btnGuess">Guess!</button>
                 <br /> <br />
                 <span id="message"></span>
+                <br />
+                <img id="win" src="http://i.imgur.com/6FTEtDy.jpg" width=200px />
+                <img id="wrong" src="http://www.cluburban.com/media/catalog/product/p/o/poop-emoji-phone-charger_1.jpg" width=100px; />
         </fieldset>
     </div>
     <div id="restart">
     <button id="restartGame">Start Over</button>
+    </div>
+    <div id="new">
+        <button id="newGame">Play Again!</button>
     </div>
 
 </body>

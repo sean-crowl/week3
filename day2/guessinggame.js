@@ -6,6 +6,9 @@ function setupGame () {
     // Clear out old values.
     $("#tbxGuess").val("");
     $("#message").text("");
+    $("#lab").text("What is your guess?");
+    $("#btnGuess").show();
+    $("#tbxGuess").show();
 
     // Come up with the answer.
     answer = parseInt(Math.random() * 10 + 1);
@@ -15,6 +18,9 @@ function setupGame () {
     $("#intro").show();
     $("#game").hide();
     $("#restart").hide();
+    $("#new").hide();
+    $("#win").hide();
+    $("#wrong").hide();
 }
 
 // Handle the guess.
@@ -23,17 +29,26 @@ function handleGuess() {
     if (+guess == answer) {
         // Tell them the answer is right.
         $("#message").text("You are right! You win!");
+        $("#new").show();
+        $("#btnGuess").hide();
+        $("#restart").hide();
+        $("#tbxGuess").hide();
+        $("#wrong").hide();
+        $("#win").show();
+        $("#lab").text("WINNER!");
     }
        // Tell them how the answer is wrong.
     else if (+guess < answer) {
         $("#message").text("Too low! Try again!");
         $("#tbxGuess").val("");
         $("#tbxGuess").focus();
+        $("#wrong").show();
     }
     else if (+guess > answer) {
         $("#message").text("Too high! Try again!");
         $("#tbxGuess").val("");
         $("#tbxGuess").focus();
+        $("#wrong").show();
     }
     /* else {
         // Tell them the answer is wrong.
@@ -58,6 +73,7 @@ $(function() {
     $("#startGame").on("click", playGame);
     $("#btnGuess").on("click", handleGuess);
     $("#restartGame").on("click", setupGame);
+    $("#newGame").on("click", setupGame);
 
     // Start the game.
     setupGame();
