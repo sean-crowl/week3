@@ -34,7 +34,7 @@ function handleGuess() {
         $("#restart").hide();
         $("#tbxGuess").hide();
         $("#wrong").hide();
-        $("#win").show();
+        $("#win").fadeIn("slow", "linear");
         $("#lab").text("WINNER!");
     }
        // Tell them how the answer is wrong.
@@ -42,13 +42,15 @@ function handleGuess() {
         $("#message").text("Too low! Try again!");
         $("#tbxGuess").val("");
         $("#tbxGuess").focus();
-        $("#wrong").show();
+        $("#wrong").hide();
+        $("#wrong").fadeIn("slow", "linear");
     }
     else if (+guess > answer) {
         $("#message").text("Too high! Try again!");
         $("#tbxGuess").val("");
         $("#tbxGuess").focus();
-        $("#wrong").show();
+        $("#wrong").hide();
+        $("#wrong").fadeIn("slow", "linear");
     }
     /* else {
         // Tell them the answer is wrong.
