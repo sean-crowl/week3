@@ -49,9 +49,16 @@ function darksky_Complete(result) {
             console.log("Longitude: " + result.longitude);
             console.log("Timezone: " + result.timezone);
             console.log("Current Weather: " + result.currently.summary); 
-            
 
-};
+            var hours = result.hourly.data;
+            
+            for(var i = 0; i < hours.length; i++)
+            {
+                var time = new Date(hours[i].time * 1000);
+                console.log(time.toLocaleString() + " - " + hours[i].summary);
+                }
+            }
+            
 
 $(function() {
 
