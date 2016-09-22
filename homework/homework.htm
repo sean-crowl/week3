@@ -26,11 +26,11 @@
                 <a class="navbar-brand" href="#">Weatherly</a>
             </div>
             <div class="nav navbar-nav navbar-right">
-                <button class="btn btn-default" id="add" style="margin: 10px;"><span class="glyphicon glyphicon-plus"></span></button>
+                <label>Enter a postal code: <input type="text" id="postalCode" placeholder="postalCode" /></label><button class="btn btn-default" id="add" style="margin: 10px;"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" id="bigbox">
         <div class="row" id="box">
             <div class="col-md-3" id="d1" style="border-radius: 10px; 
             height: 350px; 
@@ -38,11 +38,11 @@
             background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://pixabay.com/static/uploads/photo/2013/06/14/11/16/sun-sunny-139308_1280.jpg); 
             background-size: cover;">
                 <div class="col-md-12" style="text-align: center; color: white; margin-bottom: 40px;">
-                    <h4>Paintsville, Ky
+                    <h4>San Francisco, CA
                 <button onclick="removeDiv('d1')"; class="btn btn-default pull-right" id="add"><span class="glyphicon glyphicon-minus"></span></button></h4>
                 </div>
                 <br /> <br />
-                <div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">70&#8457
+                <div class="col-md-12" id="temp" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">
                 </div>
                 <br /> <br />
                 <div class="col-md-12" style="text-align: center; color: white">
@@ -51,11 +51,11 @@
                 <div class="col-md-12">
                     <hr />
                 </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
+                <div class="col-md-4" id="min" style="color:white; text-align: center;">
                 </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70 %
+                <div class="col-md-4" id="precip" style="color:white; text-align: center;">
                 </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
+                <div class="col-md-4" id="max" style="color:white; text-align: center;">
                 </div>
                 <br />
                 <div class="col-md-4" style="color:white; text-align: center;">min
@@ -115,110 +115,6 @@
                 <br /> <br />
                 <div class="col-md-12" style="text-align: center; color: white">
                     <h4>Rain</h4>
-                </div>
-                <div class="col-md-12">
-                    <hr />
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70 %
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <br />
-                <div class="col-md-4" style="color:white; text-align: center;">min
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">rain
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">max
-                </div>
-            </div>
-
-
-            <div class="col-md-3" id="d4" style="border-radius: 10px; 
-            height: 350px; 
-            margin: 30px; 
-            background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://upload.wikimedia.org/wikipedia/commons/6/69/Lightning_in_Arlington.jpg);
-            background-size: cover">
-                <div class="col-md-12" style="text-align: center; color: white; margin-bottom: 40px;">
-                    <h4>Paintsville, Ky
-                        <button onclick="removeDiv('d4')"; class="btn btn-default pull-right" id="add"><span class="glyphicon glyphicon-minus"></span></button>
-                    </h4>
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">70&#8457
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="text-align: center; color: white">
-                    <h4>T-Storms</h4>
-                </div>
-                <div class="col-md-12">
-                    <hr />
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70 %
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <br />
-                <div class="col-md-4" style="color:white; text-align: center;">min
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">rain
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">max
-                </div>
-            </div>
-            <div class="col-md-3" id="d5" style="border-radius: 10px; 
-            height: 350px; 
-            margin: 30px; 
-            background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://upload.wikimedia.org/wikipedia/commons/a/a5/St_Anton_village_when_snowing.jpg); 
-            background-size: cover">
-                <div class="col-md-12" style="text-align: center; color: white; margin-bottom: 40px;">
-                    <h4>Paintsville, Ky
-                        <button onclick="removeDiv('d5')"; class="btn btn-default pull-right" id="add"><span class="glyphicon glyphicon-minus"></span></button>
-                    </h4>
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">70&#8457
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="text-align: center; color: white">
-                    <h4>Snow</h4>
-                </div>
-                <div class="col-md-12">
-                    <hr />
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70 %
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">70&#8457
-                </div>
-                <br />
-                <div class="col-md-4" style="color:white; text-align: center;">min
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">rain
-                </div>
-                <div class="col-md-4" style="color:white; text-align: center;">max
-                </div>
-            </div>
-            <div class="col-md-3" id="d6" style="border-radius: 10px; 
-            height: 350px; 
-            margin: 30px; 
-            background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(http://www.disclosurenewsonline.com/wp-content/uploads/2013/02/sleet-1.jpeg); 
-            background-size: cover">
-                <div class="col-md-12" style="text-align: center; color: white; margin-bottom: 40px;">
-                    <h4>Paintsville, Ky
-                        <button onclick="removeDiv('d6')"; class="btn btn-default pull-right" id="add"><span class="glyphicon glyphicon-minus"></span></button>
-                    </h4>
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">70&#8457
-                </div>
-                <br /> <br />
-                <div class="col-md-12" style="text-align: center; color: white">
-                    <h4>Sleet</h4>
                 </div>
                 <div class="col-md-12">
                     <hr />

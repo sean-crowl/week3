@@ -1,0 +1,70 @@
+<label>Enter a postal code: <input type="text" id="postalCode" placeholder="postalCode" /></label>
+
+        // **********************
+        // **  Event Handlers  **
+        // **********************
+        function lookupWeatherForPostalCode_Click() {
+            var pcode = $("#postalCode").val();
+            console.log("The value of the postal code box is " + pcode);
+        }
+
+        // ***********************
+        // **  Document ready.  **
+        // ***********************
+
+        $(function() {
+            $("#lookupWeatherForPostalCode").on("click", lookupWeatherForPostalCode_Click)
+        });
+
+
+        // ***************************
+        // **  Google Web Services  **
+        // ***************************
+        
+        function lookupLatLong_Complete(result) {
+        var latitutde = result.results[0].location.lat;
+        var longitude = result.results[0].location.lng;
+        console.log("The lat and long is " + latitude + ", " + longitude);
+        }
+
+
+function lookupLatLong(city, state, postalCode) {
+//Create the address:
+if (postalCode.length !=0) {
+address = postalCode.trim();
+else if (city.length != 0 && state != 0) {
+address = city.trim() + ", " + state;
+}
+else {
+return;       //They didn't give me anything valid, so exit
+}
+}
+};
+
+
+//Call Google's API:
+        function lookupLatLong_Complete() {
+        
+        var googleurl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyBkrtUtmjoayZESvGNhnpPudPHYE_kfESw"
+        var request = {
+        url:
+        "https://api.darksky.net/forecast/31d5888f911f2afbeafa65f275545ee3/37.8267,-122.4233",
+        dataType: "jsonp",
+        success: weather
+    };
+
+    $.ajax(request);
+        }
+
+        <span class="wob_t" style="display:inline" aria-label="°Fahrenheit">°F</span>
+
+        $('#box').on('click', '.closed-btn', function(e){
+    e.preventDefault();
+    var par = $(this).closest($("[id^=app]"));
+    $(par).remove();
+});
+
+// REMOVES DIV
+$("#dftenglist").on("click", ".minusbtn", function() {
+  $(this).parent().remove();
+});
