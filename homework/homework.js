@@ -16,13 +16,12 @@ $(document).ready(function () {
     $(document).on("click", "#add", function() {
         setTimeout(function() {
         createCard();
-        }, 700);
+        }, 1000);
     });
 });
 
 function createCard() {
-        var domElement = $("#box").append('<div class="col-md-3 minusbtn" id="' + num + '" style="border-radius: 10px; height: 350px; margin: 30px; background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://pixabay.com/static/uploads/photo/2013/06/14/11/16/sun-sunny-139308_1280.jpg); background-size: cover"><h4 style="text-align: center; color: white">' + cityState + '<button onclick="removeDiv(' + num + ')"; class="btn btn-default pull-right"><span class="glyphicon glyphicon-minus"></span></button></h4><br /> <br /><div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">' + temp + '<br /></div><br /> <br /><h4 style="text-align: center; color: white">' + current + '<br /></h4><hr /><div class="col-md-4" style="color:white; text-align: center;">' + min + '</div><div class="col-md-4" style="color:white; text-align: center;">' + precip + '</div><div class="col-md-4" style="color:white; text-align: center;">' + max + '</div><br /><div class="col-md-4" style="color:white; text-align: center;">min</div><div class="col-md-4" style="color:white; text-align: center;">rain</div><div class="col-md-4" style="color:white; text-align: center;">max</div>');
-        $("#box").after(domElement);
+        $("#box").append('<div class="col-md-3 minusbtn" id="' + num + '" style="border-radius: 10px; height: 350px; margin: 30px; background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://pixabay.com/static/uploads/photo/2013/06/14/11/16/sun-sunny-139308_1280.jpg); background-size: cover"><h4 style="text-align: center; color: white">' + cityState + '<button onclick="removeDiv(' + num + ')"; class="btn btn-default pull-right"><span class="glyphicon glyphicon-minus"></span></button></h4><br /> <br /><div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">' + temp + '<br /></div><br /> <br /><h4 style="text-align: center; color: white">' + current + '<br /></h4><hr /><div class="col-md-4" style="color:white; text-align: center;">' + min + '</div><div class="col-md-4" style="color:white; text-align: center;">' + precip + '</div><div class="col-md-4" style="color:white; text-align: center;">' + max + '</div><br /><div class="col-md-4" style="color:white; text-align: center;">min</div><div class="col-md-4" style="color:white; text-align: center;">rain</div><div class="col-md-4" style="color:white; text-align: center;">max</div>');
 
 
         num++
@@ -46,7 +45,7 @@ function removeDiv(divId) {
 function weather(result) {
     current = result.currently.summary;
     temp = parseInt(result.currently.temperature) + "&#176; F";
-    precip = parseInt(result.currently.precipProbability * 100);
+    precip = (result.daily.data["0"].precipProbability * 100 + "%");
     min = parseInt(result.daily.data[0].temperatureMin) + "&#176; F";
     max = parseInt(result.daily.data[0].temperatureMax) + "&#176; F";
     console.log(result.currently.summary);
@@ -73,9 +72,8 @@ function getweather(lat, long) {
 function lookupLatLong_Complete(result) {
     lat = result.results["0"].geometry.location.lat;
     long = result.results["0"].geometry.location.lng;
-    city = result.results[0].address_components[1].long_name;
-    state = result.results[0].address_components[3].short_name;
-    cityState = city + ", " + state;
+    city = result.results[0].formatted_address;
+    cityState = city;
     console.log("The lat and long is " + latitude + ", " + longitude);
     getweather(lat, long);
 }
