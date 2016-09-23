@@ -19,15 +19,6 @@
 
     <link rel="stylesheet" type="text/css" href="homework.css" />
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 </head>
 
 <body>
@@ -36,10 +27,8 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Weatherly</a>
             </div>
-            <div class="nav navbar-nav navbar-right fb-share-button" data-href="http://sean-crowl.github.io" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fsean-crowl.github.io%2F&amp;src=sdkpreparse">Share</a></div>
             <div class="nav navbar-nav navbar-right">
-                <label>Enter a postal code: <input type="text" id="postalCode" placeholder="Enter Postal Code or City" /></label>
-                <button class="btn btn-default" id="add" style="margin: 10px;"><span class="glyphicon glyphicon-plus"></span></button>
+                <label>Enter a postal code: <input type="text" id="postalCode" placeholder="postalCode" /></label><button class="btn btn-default" id="add" style="margin: 10px;"><span class="glyphicon glyphicon-plus"></span></button>
             </div>
         </div>
     </nav>

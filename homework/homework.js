@@ -11,32 +11,33 @@ var long;
 var city;
 var state;
 var cityState;
+var backgroundpic;
 
 $(document).ready(function () {
-    $(document).on("click", "#add", function() {
-        setTimeout(function() {
-        createCard();
+    $(document).on("click", "#add", function () {
+        setTimeout(function () {
+            createCard();
         }, 1000);
     });
 });
 
 function createCard() {
-        $("#box").append('<div class="col-md-3 minusbtn" id="' + num + '" style="border-radius: 10px; height: 350px; margin: 30px; background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(https://pixabay.com/static/uploads/photo/2013/06/14/11/16/sun-sunny-139308_1280.jpg); background-size: cover"><h4 style="text-align: center; color: white">' + cityState + '<button onclick="removeDiv(' + num + ')"; class="btn btn-default pull-right"><span class="glyphicon glyphicon-minus"></span></button></h4><br /> <br /><div class="col-md-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">' + temp + '<br /></div><br /> <br /><h4 style="text-align: center; color: white">' + current + '<br /></h4><hr /><div class="col-md-4" style="color:white; text-align: center;">' + min + '</div><div class="col-md-4" style="color:white; text-align: center;">' + precip + '</div><div class="col-md-4" style="color:white; text-align: center;">' + max + '</div><br /><div class="col-md-4" style="color:white; text-align: center;">min</div><div class="col-md-4" style="color:white; text-align: center;">rain</div><div class="col-md-4" style="color:white; text-align: center;">max</div>');
+    $("#box").append('<div class="col-md-3 col-sm-12 col-xs-12 minusbtn sweather" id="' + num + '" style="border-radius: 10px; height: 350px; margin: 30px; background-image:linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url(' + backgroundpic + '); background-size: cover"><h4 style="text-align: center; color: white">' + cityState + '<button onclick="removeDiv(' + num + ')"; class="btn btn-default pull-right"><span class="glyphicon glyphicon-minus"></span></button></h4><br /> <br /><div class="col-md-12 col-sm-12 col-xs-12" style="font-size: 62px; text-align: center; color:white; margin-bottom: 50px;">' + temp + '<br /></div><br /> <br /><h4 style="text-align: center; color: white">' + current + '<br /></h4><hr /><div style="width: 100%"><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">' + min + '</div><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">' + precip + '</div><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">' + max + '</div></div><br /><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">min</div><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">rain</div><div class="col-md-4 col-sm-4 col-xs-4" style="color:white; text-align: center;">max</div><div id="hi"></div>');
 
 
-        num++
-    
+    num++
+
 
 
 
 }
 
 $("#" + num).on("click", ".minusbtn", function () {
-        $(this).parent().remove();
+    $(this).parent().remove();
 
-        
 
-    });
+
+});
 
 function removeDiv(divId) {
     $("#" + divId).remove();
@@ -45,16 +46,46 @@ function removeDiv(divId) {
 function weather(result) {
     current = result.currently.summary;
     temp = parseInt(result.currently.temperature) + "&#176; F";
-    precip = (result.daily.data["0"].precipProbability * 100 + "%");
+    precip = parseInt(result.daily.data["0"].precipProbability * 100) + "%";
     min = parseInt(result.daily.data[0].temperatureMin) + "&#176; F";
     max = parseInt(result.daily.data[0].temperatureMax) + "&#176; F";
     console.log(result.currently.summary);
+    icon = result.currently.icon;
+    
+backgroundpic = "";
+
+    switch (icon) {
+        case "clear-day":
+        case "clear-night":
+        backgroundpic = "http://i.imgur.com/jfX4gI3.jpg";
+            break;
+        case "rain":
+        backgroundpic = "http://i.imgur.com/2fbkFRP.jpg";
+            break;
+        case "snow":
+        backgroundpic = "http://i.imgur.com/lcAuNn9.jpg";
+            break;
+        case "sleet":
+        backgroundpic = "http://i.imgur.com/oZVlfuq.jpg";
+            break;
+        case "wind":
+        backgroundpic = "http://i.imgur.com/IbFC0H7.jpg";
+            break;
+        case "fog":
+        backgroundpic = "http://i.imgur.com/rmGHGaj.jpg";
+            break;
+        case "cloudy":
+        case "partly-cloudy-day":
+        case "partly-cloudy-night":
+        backgroundpic = "http://i.imgur.com/gMAcBp2.jpg";
+            break;
+    }
+
     $("#current").text(current);
     $("#temp").text(parseInt(temp));
     $("#precip").text(precip + "%");
     $("#min").text(parseInt(min));
     $("#max").text(parseInt(max));
-
 }
 
 function getweather(lat, long) {
@@ -101,6 +132,14 @@ function lookupLatLong(city, state, postalCode) {
 
     $.ajax(request);
 }
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 // **********************
 // **  Event Handlers  **
